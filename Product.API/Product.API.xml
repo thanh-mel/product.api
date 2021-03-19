@@ -1,0 +1,363 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Product.API</name>
+    </assembly>
+    <members>
+        <member name="T:Product.API.Controllers.ProductController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Product.API.Controllers.ProductController.#ctor(Microsoft.Extensions.Logging.ILogger{Product.API.Controllers.ProductController},Product.API.Repositories.IProductRepository)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="productRepository"></param>
+        </member>
+        <member name="M:Product.API.Controllers.ProductController.GetAllProductAsync">
+            <summary>
+            Get all products
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Controllers.ProductController.GetProductAsync(System.Guid)">
+            <summary>
+            Get a specific product by id
+            </summary>
+            <param name="productId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Product.API.DbConnection.DbConnectionStrategy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Product.API.DbConnection.DbConnectionStrategy.#ctor(System.Collections.Generic.IEnumerable{Product.API.DbConnection.IDbConnectionFactory})">
+            <summary>
+            
+            </summary>
+            <param name="factories"></param>
+        </member>
+        <member name="M:Product.API.DbConnection.DbConnectionStrategy.CreateConnectionAsync(Product.API.Models.DatabaseType)">
+            <summary>
+            
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Product.API.DbConnection.IDbConnectionFactory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Product.API.DbConnection.IDbConnectionFactory.Support(Product.API.Models.DatabaseType)">
+            <summary>
+            
+            </summary>
+            <param name="databaseType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.DbConnection.IDbConnectionFactory.CreateConnectionAsync">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Product.API.DbConnection.IDbConnectionStrategy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Product.API.DbConnection.IDbConnectionStrategy.CreateConnectionAsync(Product.API.Models.DatabaseType)">
+            <summary>
+            
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Product.API.DbConnection.SqliteDbConnectionFactory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Product.API.DbConnection.SqliteDbConnectionFactory.#ctor(Microsoft.Extensions.Options.IOptions{Product.API.Models.SqliteDatabaseSettings})">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Product.API.DbConnection.SqliteDbConnectionFactory.CreateConnectionAsync">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.DbConnection.SqliteDbConnectionFactory.Support(Product.API.Models.DatabaseType)">
+            <summary>
+            
+            </summary>
+            <param name="databaseType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Product.API.Models.DatabaseType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Product.API.Models.DatabaseType.Sqlite">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Product.API.Models.DatabaseType.MSSQL">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Product.API.Models.DatabaseType.MySQL">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Product.API.Models.DatabaseType.Postgres">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Product.API.Models.Product">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Product.API.Models.Product.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Product.API.Models.Product.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Product.API.Models.Product.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Product.API.Models.Product.Price">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Product.API.Models.Product.DeliveryPrice">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Product.API.Models.ProductOption">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Product.API.Models.ProductOption.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Product.API.Models.ProductOption.ProductId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Product.API.Models.ProductOption.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Product.API.Models.ProductOption.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Product.API.Models.SqliteDatabaseSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Product.API.Models.SqliteDatabaseSettings.ConnectionString">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Product.API.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Product.API.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Product.API.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Product.API.Repositories.IProductOptionRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Product.API.Repositories.IProductRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Product.API.Repositories.IRepository`1">
+            <summary>
+            The generic repository that has basic CRUD operations
+            </summary>
+            <typeparam name="TModel"></typeparam>
+        </member>
+        <member name="M:Product.API.Repositories.IRepository`1.UpsertAsync(`0)">
+            <summary>
+            Create a new TModel or update the existing the TModel
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Repositories.IRepository`1.DeleteAsync(`0)">
+            <summary>
+            Delete the TModel
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Repositories.IRepository`1.GetAsync(System.Guid)">
+            <summary>
+            Get the TModel by Guid
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Repositories.IRepository`1.GetAllAsync">
+            <summary>
+            Get all TModels 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Product.API.Repositories.ProductOptionRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Product.API.Repositories.ProductOptionRepository.#ctor(Microsoft.Extensions.Logging.ILogger{Product.API.Repositories.ProductOptionRepository},Product.API.DbConnection.IDbConnectionStrategy)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="dbConnectionStrategy"></param>
+        </member>
+        <member name="M:Product.API.Repositories.ProductOptionRepository.DeleteAsync(Product.API.Models.ProductOption)">
+            <summary>
+            
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Repositories.ProductOptionRepository.GetAllAsync">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Repositories.ProductOptionRepository.GetAsync(System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Repositories.ProductOptionRepository.UpsertAsync(Product.API.Models.ProductOption)">
+            <summary>
+            
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Product.API.Repositories.ProductRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Product.API.Repositories.ProductRepository.#ctor(Microsoft.Extensions.Logging.ILogger{Product.API.Repositories.ProductRepository},Product.API.DbConnection.IDbConnectionStrategy)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="dbConnectionStrategy"></param>
+        </member>
+        <member name="M:Product.API.Repositories.ProductRepository.DeleteAsync(Product.API.Models.Product)">
+            <summary>
+            
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Repositories.ProductRepository.GetAllAsync">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Repositories.ProductRepository.GetAsync(System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Repositories.ProductRepository.UpsertAsync(Product.API.Models.Product)">
+            <summary>
+            
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Product.API.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Product.API.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+            <param name="environment"></param>
+        </member>
+        <member name="P:Product.API.Startup.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Product.API.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Product.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>
