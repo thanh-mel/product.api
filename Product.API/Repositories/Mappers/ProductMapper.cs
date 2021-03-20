@@ -47,6 +47,7 @@ namespace Product.API.Repositories.Mappers
                     product.Options.Add(new Models.ProductOption()
                     {
                         Id = option.OptionId,
+                        ProductId = productId,
                         Name = option.OptionName,
                         Description = option.OptionDesc
                     });

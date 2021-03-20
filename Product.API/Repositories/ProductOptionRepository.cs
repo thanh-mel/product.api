@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Dapper;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using Product.API.DbConnection;
 using Product.API.Models;
 using System;
@@ -19,7 +21,7 @@ namespace Product.API.Repositories
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="dbConnectionStrategy"></param>
-        public ProductOptionRepository(ILogger<ProductOptionRepository> logger, 
+        public ProductOptionRepository(ILogger<ProductOptionRepository> logger,
             IDbConnectionStrategy dbConnectionStrategy)
         {
             _logger = logger;
@@ -30,9 +32,26 @@ namespace Product.API.Repositories
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Task DeleteAsync(string id)
+        public async Task DeleteAsync(string id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var conn = await _dbConnectionStrategy.CreateConnectionAsync(DatabaseType.Sqlite))
+                {
+                    var query = @"
+                                    delete
+                                    from ProductOptions
+                                    where Id = @Id collate nocase
+                                ";
+
+                    await conn.ExecuteAsync(query, new { Id = id.ToString() });
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"An error occurred when trying to delete the product option id {id}. Exception: {ex}");
+                throw ex;
+            }
         }
         /// <summary>
         /// 
@@ -56,9 +75,33 @@ namespace Product.API.Repositories
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public Task<ProductOption> CreateAsync(ProductOption model)
+        public async Task<ProductOption> CreateAsync(ProductOption model)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var conn = await _dbConnectionStrategy.CreateConnectionAsync(DatabaseType.Sqlite))
+                {
+                    var query = @"
+                                    insert into ProductOptions (Id, ProductId, Name, Description)
+                                    values (@Id, @ProductId, @Name, @Description)
+                                ";
+
+                    await conn.ExecuteAsync(query,
+                        new
+                        {
+                            Id = model.Id,
+                            ProductId = model.ProductId,
+                            Name = model.Name,
+                            Description = model.Description
+                        });
+                    return model;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"An error occurred when trying to create the product option {JsonConvert.SerializeObject(model)}. Exception: {ex}");
+                throw ex;
+            }
         }
         /// <summary>
         /// 

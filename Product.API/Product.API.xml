@@ -50,6 +50,32 @@
             <param name="productId"></param>
             <returns></returns>
         </member>
+        <member name="T:Product.API.Controllers.ProductOptionController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Product.API.Controllers.ProductOptionController.#ctor(Microsoft.Extensions.Logging.ILogger{Product.API.Controllers.ProductOptionController},Product.API.Services.IProductOptionService)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="productService"></param>
+        </member>
+        <member name="M:Product.API.Controllers.ProductOptionController.AddProductOptionsAsync(System.Collections.Generic.List{Product.API.Models.ProductOption})">
+            <summary>
+            Add more options to a specified product.
+            </summary>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Controllers.ProductOptionController.DeleteProductOptionsAsync(System.Collections.Generic.List{System.String})">
+            <summary>
+            Delete options from a specified product.
+            </summary>
+            <param name="optionIds"></param>
+            <returns></returns>
+        </member>
         <member name="T:Product.API.DbConnection.DbConnectionStrategy">
             <summary>
             
@@ -230,6 +256,11 @@
             </summary>
         </member>
         <member name="P:Product.API.Models.ProductOption.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Product.API.Models.ProductOption.ProductId">
             <summary>
             
             </summary>
@@ -488,6 +519,25 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="T:Product.API.Services.IProductOptionService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Product.API.Services.IProductOptionService.AddProductOptionsAsync(System.Collections.Generic.List{Product.API.Models.ProductOption})">
+            <summary>
+            Add options to a specified product
+            </summary>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Services.IProductOptionService.DeleteProductOptionsAsync(System.Collections.Generic.List{System.String})">
+            <summary>
+            Delete options from a product
+            </summary>
+            <param name="optionIds"></param>
+            <returns></returns>
+        </member>
         <member name="T:Product.API.Services.IProductService">
             <summary>
             
@@ -544,6 +594,32 @@
             </summary>
             <param name="inputHash"></param>
             <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Product.API.Services.ProductOptionService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Product.API.Services.ProductOptionService.#ctor(Microsoft.Extensions.Logging.ILogger{Product.API.Services.ProductOptionService},Product.API.Repositories.IRepository{Product.API.Models.ProductOption})">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="repository"></param>
+        </member>
+        <member name="M:Product.API.Services.ProductOptionService.AddProductOptionsAsync(System.Collections.Generic.List{Product.API.Models.ProductOption})">
+            <summary>
+            Add options to a specified product
+            </summary>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Services.ProductOptionService.DeleteProductOptionsAsync(System.Collections.Generic.List{System.String})">
+            <summary>
+            Delete options from a specified product
+            </summary>
+            <param name="optionIds"></param>
             <returns></returns>
         </member>
         <member name="T:Product.API.Services.ProductService">

@@ -12,6 +12,10 @@
         /// <summary>
         /// 
         /// </summary>
+        public string ProductId { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public string Name { get; set; }
         /// <summary>
         /// 

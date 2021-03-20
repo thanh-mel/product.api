@@ -74,6 +74,7 @@ namespace Product.API
             services.AddTransient<IRepository<Models.Product>, ProductRepository>();
             services.AddTransient<IRepository<ProductOption>, ProductOptionRepository>();
             services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IProductOptionService, ProductOptionService>();
             services.AddTransient<IProductMapper, ProductMapper>();
 
             services.AddTransient<IOptimisticLockingResolver, OptimisticLockingResolver>();
