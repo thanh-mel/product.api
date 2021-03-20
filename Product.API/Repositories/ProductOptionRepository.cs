@@ -10,7 +10,7 @@ namespace Product.API.Repositories
     /// <summary>
     /// 
     /// </summary>
-    public class ProductOptionRepository : IProductOptionRepository
+    public class ProductOptionRepository : IRepository<ProductOption>
     {
         private readonly ILogger<ProductOptionRepository> _logger;
         private readonly IDbConnectionStrategy _dbConnectionStrategy;
@@ -28,9 +28,9 @@ namespace Product.API.Repositories
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public Task DeleteAsync(ProductOption model)
+        public Task DeleteAsync(string id)
         {
             throw new NotImplementedException();
         }
@@ -56,7 +56,16 @@ namespace Product.API.Repositories
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public Task UpsertAsync(ProductOption model)
+        public Task<ProductOption> CreateAsync(ProductOption model)
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public Task UpdateAsync(ProductOption model)
         {
             throw new NotImplementedException();
         }

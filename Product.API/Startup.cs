@@ -9,6 +9,8 @@ using Microsoft.Extensions.Logging;
 using Product.API.DbConnection;
 using Product.API.Models;
 using Product.API.Repositories;
+using Product.API.Repositories.Mappers;
+using Product.API.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -69,8 +71,14 @@ namespace Product.API
 
             services.AddScoped<IDbConnectionFactory, SqliteDbConnectionFactory>();
             services.AddScoped<IDbConnectionStrategy, DbConnectionStrategy>();
-            services.AddTransient<IProductRepository, ProductRepository>();
-            services.AddTransient<IProductOptionRepository, ProductOptionRepository>();
+            services.AddTransient<IRepository<Models.Product>, ProductRepository>();
+            services.AddTransient<IRepository<ProductOption>, ProductOptionRepository>();
+            services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IProductMapper, ProductMapper>();
+
+            services.AddTransient<IOptimisticLockingResolver, OptimisticLockingResolver>();
+
+            services.AddHttpContextAccessor();
         }
         /// <summary>
         /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

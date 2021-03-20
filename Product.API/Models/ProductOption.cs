@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Product.API.Models
+﻿namespace Product.API.Models
 {
     /// <summary>
     /// 
@@ -14,16 +12,10 @@ namespace Product.API.Models
         /// <summary>
         /// 
         /// </summary>
-        public Guid ProductId { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
         public string Name { get; set; }
         /// <summary>
         /// 
         /// </summary>
         public string Description { get; set; }
-
-
     }
 }

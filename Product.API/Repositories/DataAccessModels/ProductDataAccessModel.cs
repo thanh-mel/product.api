@@ -1,24 +1,22 @@
-﻿using System.Collections.Generic;
-
-namespace Product.API.Models
+﻿namespace Product.API.Repositories.DataAccessModels
 {
     /// <summary>
     /// 
     /// </summary>
-    public class Product
+    public class ProductDataAccessModel
     {
         /// <summary>
         /// 
         /// </summary>
-        public string Id { get; set; }
+        public string ProductId { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string Name { get; set; }
+        public string ProductName { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public string Description { get; set; }
+        public string ProductDesc { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -30,6 +28,14 @@ namespace Product.API.Models
         /// <summary>
         /// 
         /// </summary>
-        public List<ProductOption> Options { get; set; }
+        public string OptionId { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string OptionName { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string OptionDesc { get; set; }
     }
 }

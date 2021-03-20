@@ -9,7 +9,7 @@ namespace Product.API.DbConnection
     /// <summary>
     /// 
     /// </summary>
-    public class SqliteDbConnectionFactory : IDbConnectionFactory
+    public sealed class SqliteDbConnectionFactory : IDbConnectionFactory
     {
         private readonly IOptions<SqliteDatabaseSettings> _options;
 

@@ -10,7 +10,7 @@ namespace Product.API.DbConnection
     /// <summary>
     /// 
     /// </summary>
-    public class DbConnectionStrategy : IDbConnectionStrategy
+    public sealed class DbConnectionStrategy : IDbConnectionStrategy
     {
         private readonly IEnumerable<IDbConnectionFactory> _factories;
         /// <summary>

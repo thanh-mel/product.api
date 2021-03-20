@@ -11,17 +11,23 @@ namespace Product.API.Repositories
     public interface IRepository<TModel>
     {
         /// <summary>
-        /// Create a new TModel or update the existing the TModel
+        /// Create a new TModel
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task UpsertAsync(TModel model);
+        Task<TModel> CreateAsync(TModel model);
+        /// <summary>
+        /// Update the existing the TModel
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        Task UpdateAsync(TModel model);
         /// <summary>
         /// Delete the TModel
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        Task DeleteAsync(TModel model);
+        Task DeleteAsync(string id);
         /// <summary>
         /// Get the TModel by Guid
         /// </summary>

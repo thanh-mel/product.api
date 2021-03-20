@@ -9,12 +9,12 @@
             
             </summary>
         </member>
-        <member name="M:Product.API.Controllers.ProductController.#ctor(Microsoft.Extensions.Logging.ILogger{Product.API.Controllers.ProductController},Product.API.Repositories.IProductRepository)">
+        <member name="M:Product.API.Controllers.ProductController.#ctor(Microsoft.Extensions.Logging.ILogger{Product.API.Controllers.ProductController},Product.API.Services.IProductService)">
             <summary>
             
             </summary>
             <param name="logger"></param>
-            <param name="productRepository"></param>
+            <param name="productService"></param>
         </member>
         <member name="M:Product.API.Controllers.ProductController.GetAllProductAsync">
             <summary>
@@ -25,6 +25,27 @@
         <member name="M:Product.API.Controllers.ProductController.GetProductAsync(System.Guid)">
             <summary>
             Get a specific product by id
+            </summary>
+            <param name="productId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Controllers.ProductController.UpdateProductAsync(Product.API.Models.Product)">
+            <summary>
+            Update the existing product.
+            </summary>
+            <param name="product"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Controllers.ProductController.CreateProductAsync(Product.API.Models.Product)">
+            <summary>
+            Create new product. Please ignore the Product Id and Option Id in the payload as they will be automatically generated.
+            </summary>
+            <param name="createProductRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Controllers.ProductController.DeleteProductAsync(System.String)">
+            <summary>
+            Delete the existing product
             </summary>
             <param name="productId"></param>
             <returns></returns>
@@ -100,6 +121,49 @@
             <param name="databaseType"></param>
             <returns></returns>
         </member>
+        <member name="T:Product.API.Exceptions.ConcurrencyOperationException">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Product.API.Exceptions.ConcurrencyOperationException.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:Product.API.Filters.ETagFilter">
+            <summary>
+            Return an ETag which contains a hash of the requested object. 
+            This ETag will then be used along with If-Match to prevent the LOST UPDATE issue.
+            </summary>
+        </member>
+        <member name="M:Product.API.Filters.ETagFilter.OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:Product.API.Helpers.HashFactory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Product.API.Helpers.HashFactory.GetHashSHA256(System.String)">
+            <summary>
+            Compute hash for the input
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Helpers.HashFactory.VerifyHash(System.String,System.String)">
+            <summary>
+            Verify a hash against a string.
+            </summary>
+            <param name="inputHash"></param>
+            <param name="hash"></param>
+            <returns></returns>
+        </member>
         <member name="T:Product.API.Models.DatabaseType">
             <summary>
             
@@ -155,17 +219,17 @@
             
             </summary>
         </member>
+        <member name="P:Product.API.Models.Product.Options">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:Product.API.Models.ProductOption">
             <summary>
             
             </summary>
         </member>
         <member name="P:Product.API.Models.ProductOption.Id">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Product.API.Models.ProductOption.ProductId">
             <summary>
             
             </summary>
@@ -208,12 +272,47 @@
             <param name="args"></param>
             <returns></returns>
         </member>
-        <member name="T:Product.API.Repositories.IProductOptionRepository">
+        <member name="T:Product.API.Repositories.DataAccessModels.ProductDataAccessModel">
             <summary>
             
             </summary>
         </member>
-        <member name="T:Product.API.Repositories.IProductRepository">
+        <member name="P:Product.API.Repositories.DataAccessModels.ProductDataAccessModel.ProductId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Product.API.Repositories.DataAccessModels.ProductDataAccessModel.ProductName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Product.API.Repositories.DataAccessModels.ProductDataAccessModel.ProductDesc">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Product.API.Repositories.DataAccessModels.ProductDataAccessModel.Price">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Product.API.Repositories.DataAccessModels.ProductDataAccessModel.DeliveryPrice">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Product.API.Repositories.DataAccessModels.ProductDataAccessModel.OptionId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Product.API.Repositories.DataAccessModels.ProductDataAccessModel.OptionName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Product.API.Repositories.DataAccessModels.ProductDataAccessModel.OptionDesc">
             <summary>
             
             </summary>
@@ -224,18 +323,25 @@
             </summary>
             <typeparam name="TModel"></typeparam>
         </member>
-        <member name="M:Product.API.Repositories.IRepository`1.UpsertAsync(`0)">
+        <member name="M:Product.API.Repositories.IRepository`1.CreateAsync(`0)">
             <summary>
-            Create a new TModel or update the existing the TModel
+            Create a new TModel
             </summary>
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:Product.API.Repositories.IRepository`1.DeleteAsync(`0)">
+        <member name="M:Product.API.Repositories.IRepository`1.UpdateAsync(`0)">
+            <summary>
+            Update the existing the TModel
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Repositories.IRepository`1.DeleteAsync(System.String)">
             <summary>
             Delete the TModel
             </summary>
-            <param name="model"></param>
+            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:Product.API.Repositories.IRepository`1.GetAsync(System.Guid)">
@@ -251,6 +357,30 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:Product.API.Repositories.Mappers.IProductMapper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Product.API.Repositories.Mappers.IProductMapper.Map(System.Collections.Generic.List{Product.API.Repositories.DataAccessModels.ProductDataAccessModel})">
+            <summary>
+            
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Product.API.Repositories.Mappers.ProductMapper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Product.API.Repositories.Mappers.ProductMapper.Map(System.Collections.Generic.List{Product.API.Repositories.DataAccessModels.ProductDataAccessModel})">
+            <summary>
+            
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="T:Product.API.Repositories.ProductOptionRepository">
             <summary>
             
@@ -263,11 +393,11 @@
             <param name="logger"></param>
             <param name="dbConnectionStrategy"></param>
         </member>
-        <member name="M:Product.API.Repositories.ProductOptionRepository.DeleteAsync(Product.API.Models.ProductOption)">
+        <member name="M:Product.API.Repositories.ProductOptionRepository.DeleteAsync(System.String)">
             <summary>
             
             </summary>
-            <param name="model"></param>
+            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:Product.API.Repositories.ProductOptionRepository.GetAllAsync">
@@ -283,7 +413,14 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Product.API.Repositories.ProductOptionRepository.UpsertAsync(Product.API.Models.ProductOption)">
+        <member name="M:Product.API.Repositories.ProductOptionRepository.CreateAsync(Product.API.Models.ProductOption)">
+            <summary>
+            
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Repositories.ProductOptionRepository.UpdateAsync(Product.API.Models.ProductOption)">
             <summary>
             
             </summary>
@@ -295,18 +432,18 @@
             
             </summary>
         </member>
-        <member name="M:Product.API.Repositories.ProductRepository.#ctor(Microsoft.Extensions.Logging.ILogger{Product.API.Repositories.ProductRepository},Product.API.DbConnection.IDbConnectionStrategy)">
+        <member name="M:Product.API.Repositories.ProductRepository.#ctor(Microsoft.Extensions.Logging.ILogger{Product.API.Repositories.ProductRepository},Product.API.DbConnection.IDbConnectionStrategy,Product.API.Repositories.Mappers.IProductMapper)">
             <summary>
             
             </summary>
             <param name="logger"></param>
             <param name="dbConnectionStrategy"></param>
+            <param name="productMapper"></param>
         </member>
-        <member name="M:Product.API.Repositories.ProductRepository.DeleteAsync(Product.API.Models.Product)">
+        <member name="M:Product.API.Repositories.ProductRepository.DeleteAsync(System.String)">
             <summary>
-            
+            Delete product by id.
             </summary>
-            <param name="model"></param>
             <returns></returns>
         </member>
         <member name="M:Product.API.Repositories.ProductRepository.GetAllAsync">
@@ -322,11 +459,139 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Product.API.Repositories.ProductRepository.UpsertAsync(Product.API.Models.Product)">
+        <member name="M:Product.API.Repositories.ProductRepository.CreateAsync(Product.API.Models.Product)">
+            <summary>
+            Create a new product
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Repositories.ProductRepository.UpdateAsync(Product.API.Models.Product)">
             <summary>
             
             </summary>
             <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Product.API.Services.IOptimisticLockingResolver">
+            <summary>
+            IMPORTANT: To avoid the LOST UPDATE problem in REST API where in some cases there will be a risk that multiple requests could 
+            update or delete on the same product, therefore we need to implement the optimistic locking either at the Web API level 
+            or database level. In this project it's on Web API level.
+            </summary>
+        </member>
+        <member name="M:Product.API.Services.IOptimisticLockingResolver.IsRequestValid(System.String,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="inputHash"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Product.API.Services.IProductService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Product.API.Services.IProductService.GetAsync(System.Guid)">
+            <summary>
+            Get the product by Guid
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Services.IProductService.GetAllAsync">
+            <summary>
+            Get all products 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Services.IProductService.UpdateProductAsync(Product.API.Models.Product)">
+            <summary>
+            Update existing product
+            </summary>
+            <param name="product"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Services.IProductService.CreateProductAsync(Product.API.Models.Product)">
+            <summary>
+            Create new product
+            </summary>
+            <param name="product"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Services.IProductService.DeleteProductAsync(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="productId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Product.API.Services.OptimisticLockingResolver">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Product.API.Services.OptimisticLockingResolver.#ctor(Microsoft.Extensions.Logging.ILogger{Product.API.Services.OptimisticLockingResolver})">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Product.API.Services.OptimisticLockingResolver.IsRequestValid(System.String,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="inputHash"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Product.API.Services.ProductService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Product.API.Services.ProductService.#ctor(Microsoft.Extensions.Logging.ILogger{Product.API.Services.ProductService},Product.API.Repositories.IRepository{Product.API.Models.Product},Microsoft.AspNetCore.Http.IHttpContextAccessor,Product.API.Services.IOptimisticLockingResolver)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="repository"></param>
+            <param name="httpContextAccessor"></param>
+            <param name="optimisticLockingResolver"></param>
+        </member>
+        <member name="M:Product.API.Services.ProductService.CreateProductAsync(Product.API.Models.Product)">
+            <summary>
+            Create new product.
+            </summary>
+            <param name="product"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Services.ProductService.DeleteProductAsync(System.String)">
+            <summary>
+            Delete existing product.
+            </summary>
+            <param name="productId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Services.ProductService.GetAllAsync">
+            <summary>
+            Get all products
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Services.ProductService.GetAsync(System.Guid)">
+            <summary>
+            Get a specific product by id.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Services.ProductService.UpdateProductAsync(Product.API.Models.Product)">
+            <summary>
+            Update the existing product.
+            </summary>
+            <param name="product"></param>
             <returns></returns>
         </member>
         <member name="T:Product.API.Startup">
