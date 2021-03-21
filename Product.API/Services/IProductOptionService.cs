@@ -12,14 +12,15 @@ namespace Product.API.Services
         /// <summary>
         /// Add options to a specified product
         /// </summary>
+        /// <param name="productId"></param>
         /// <param name="options"></param>
         /// <returns></returns>
-        Task AddProductOptionsAsync(List<ProductOption> options);
+        Task<List<ProductOption>> AddManyProductOptionsAsync(string productId, List<ProductOption> options);
         /// <summary>
         /// Delete options from a product
         /// </summary>
         /// <param name="optionIds"></param>
         /// <returns></returns>
-        Task DeleteProductOptionsAsync(List<string> optionIds);
+        Task DeleteManyProductOptionsAsync(List<string> optionIds);
     }
 }

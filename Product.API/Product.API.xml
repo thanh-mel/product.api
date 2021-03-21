@@ -62,10 +62,12 @@
             <param name="logger"></param>
             <param name="productService"></param>
         </member>
-        <member name="M:Product.API.Controllers.ProductOptionController.AddProductOptionsAsync(System.Collections.Generic.List{Product.API.Models.ProductOption})">
+        <member name="M:Product.API.Controllers.ProductOptionController.AddProductOptionsAsync(System.String,System.Collections.Generic.List{Product.API.Models.ProductOption})">
             <summary>
-            Add more options to a specified product.
+            Add more options to a specified product. Ignore OptionId in the payload as they will be generated automatically.
+            Required: `productId` parameter in the endpoint.
             </summary>
+            <param name="productId"></param>
             <param name="options"></param>
             <returns></returns>
         </member>
@@ -153,6 +155,17 @@
             </summary>
         </member>
         <member name="M:Product.API.Exceptions.ConcurrencyOperationException.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:Product.API.Exceptions.ProductNotFoundException">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Product.API.Exceptions.ProductNotFoundException.#ctor(System.String)">
             <summary>
             
             </summary>
@@ -361,6 +374,13 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:Product.API.Repositories.IRepository`1.CreateManyAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            Create a list of TModel
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
         <member name="M:Product.API.Repositories.IRepository`1.UpdateAsync(`0)">
             <summary>
             Update the existing the TModel
@@ -373,6 +393,13 @@
             Delete the TModel
             </summary>
             <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Repositories.IRepository`1.DeleteManyAsync(System.Collections.Generic.List{System.String})">
+            <summary>
+            
+            </summary>
+            <param name="ids"></param>
             <returns></returns>
         </member>
         <member name="M:Product.API.Repositories.IRepository`1.GetAsync(System.Guid)">
@@ -458,6 +485,20 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:Product.API.Repositories.ProductOptionRepository.CreateManyAsync(System.Collections.Generic.IList{Product.API.Models.ProductOption})">
+            <summary>
+            
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Repositories.ProductOptionRepository.DeleteManyAsync(System.Collections.Generic.List{System.String})">
+            <summary>
+            
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
         <member name="T:Product.API.Repositories.ProductRepository">
             <summary>
             
@@ -504,6 +545,20 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:Product.API.Repositories.ProductRepository.CreateManyAsync(System.Collections.Generic.IList{Product.API.Models.Product})">
+            <summary>
+            
+            </summary>
+            <param name="models"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Product.API.Repositories.ProductRepository.DeleteManyAsync(System.Collections.Generic.List{System.String})">
+            <summary>
+            
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
         <member name="T:Product.API.Services.IOptimisticLockingResolver">
             <summary>
             IMPORTANT: To avoid the LOST UPDATE problem in REST API where in some cases there will be a risk that multiple requests could 
@@ -524,14 +579,15 @@
             
             </summary>
         </member>
-        <member name="M:Product.API.Services.IProductOptionService.AddProductOptionsAsync(System.Collections.Generic.List{Product.API.Models.ProductOption})">
+        <member name="M:Product.API.Services.IProductOptionService.AddManyProductOptionsAsync(System.String,System.Collections.Generic.List{Product.API.Models.ProductOption})">
             <summary>
             Add options to a specified product
             </summary>
+            <param name="productId"></param>
             <param name="options"></param>
             <returns></returns>
         </member>
-        <member name="M:Product.API.Services.IProductOptionService.DeleteProductOptionsAsync(System.Collections.Generic.List{System.String})">
+        <member name="M:Product.API.Services.IProductOptionService.DeleteManyProductOptionsAsync(System.Collections.Generic.List{System.String})">
             <summary>
             Delete options from a product
             </summary>
@@ -601,21 +657,23 @@
             
             </summary>
         </member>
-        <member name="M:Product.API.Services.ProductOptionService.#ctor(Microsoft.Extensions.Logging.ILogger{Product.API.Services.ProductOptionService},Product.API.Repositories.IRepository{Product.API.Models.ProductOption})">
+        <member name="M:Product.API.Services.ProductOptionService.#ctor(Microsoft.Extensions.Logging.ILogger{Product.API.Services.ProductOptionService},Product.API.Repositories.IRepository{Product.API.Models.Product},Product.API.Repositories.IRepository{Product.API.Models.ProductOption})">
             <summary>
             
             </summary>
             <param name="logger"></param>
-            <param name="repository"></param>
+            <param name="productRepository"></param>
+            <param name="productOptionRepository"></param>
         </member>
-        <member name="M:Product.API.Services.ProductOptionService.AddProductOptionsAsync(System.Collections.Generic.List{Product.API.Models.ProductOption})">
+        <member name="M:Product.API.Services.ProductOptionService.AddManyProductOptionsAsync(System.String,System.Collections.Generic.List{Product.API.Models.ProductOption})">
             <summary>
             Add options to a specified product
             </summary>
+            <param name="productId"></param>
             <param name="options"></param>
             <returns></returns>
         </member>
-        <member name="M:Product.API.Services.ProductOptionService.DeleteProductOptionsAsync(System.Collections.Generic.List{System.String})">
+        <member name="M:Product.API.Services.ProductOptionService.DeleteManyProductOptionsAsync(System.Collections.Generic.List{System.String})">
             <summary>
             Delete options from a specified product
             </summary>

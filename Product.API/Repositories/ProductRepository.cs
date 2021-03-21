@@ -6,6 +6,7 @@ using Product.API.DbConnection;
 using Product.API.Repositories.DataAccessModels;
 using Product.API.Repositories.Mappers;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
@@ -292,6 +293,24 @@ namespace Product.API.Repositories
                 }
                 throw ex;
             }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="models"></param>
+        /// <returns></returns>
+        public Task CreateManyAsync(IList<Models.Product> models)
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        public Task DeleteManyAsync(List<string> ids)
+        {
+            throw new NotImplementedException();
         }
     }
 }

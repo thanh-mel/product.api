@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Product.API.Exceptions;
 using Product.API.Models;
 using Product.API.Services;
 using System;
@@ -30,17 +31,24 @@ namespace Product.API.Controllers
             _productOptionService = productService;
         }
         /// <summary>
-        /// Add more options to a specified product.
+        /// Add more options to a specified product. Ignore OptionId in the payload as they will be generated automatically.
+        /// Required: `productId` parameter in the endpoint.
         /// </summary>
+        /// <param name="productId"></param>
         /// <param name="options"></param>
         /// <returns></returns>
-        [Route("v1/options"), HttpPost]
-        public async Task<IActionResult> AddProductOptionsAsync([FromBody] List<ProductOption> options)
+        [Route("v1/products/{productId}/options"), HttpPost]
+        public async Task<IActionResult> AddProductOptionsAsync(string productId, [FromBody] List<ProductOption> options)
         {
             try
             {
-                await _productOptionService.AddProductOptionsAsync(options);
-                return Ok();
+                var result = await _productOptionService.AddManyProductOptionsAsync(productId, options);
+                return Ok(result);
+            }
+            catch(ProductNotFoundException pne)
+            {
+                _logger.LogError($"An error occurred. Exception: {pne}");
+                return NotFound($"Product {productId} not found");
             }
             catch (Exception ex)
             {
@@ -58,7 +66,7 @@ namespace Product.API.Controllers
         {
             try
             {
-                await _productOptionService.DeleteProductOptionsAsync(optionIds);
+                await _productOptionService.DeleteManyProductOptionsAsync(optionIds);
                 return Ok();
             }
             catch (Exception ex)
