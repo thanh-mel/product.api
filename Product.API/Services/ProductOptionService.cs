@@ -16,7 +16,7 @@ namespace Product.API.Services
     {
         private readonly ILogger<ProductOptionService> _logger;
         private readonly IRepository<Models.Product> _productRepository;
-        private readonly IRepository<ProductOption> _productOptionrepository;
+        private readonly IRepository<ProductOption> _productOptionRepository;
 
         /// <summary>
         /// 
@@ -30,7 +30,7 @@ namespace Product.API.Services
         {
             _logger = logger;
             _productRepository = productRepository;
-            _productOptionrepository = productOptionRepository;
+            _productOptionRepository = productOptionRepository;
         }
         /// <summary>
         /// Add options to a specified product
@@ -67,7 +67,7 @@ namespace Product.API.Services
                 option.Id = Guid.NewGuid().ToString();
             }
 
-            await _productOptionrepository.CreateManyAsync(validOptions);
+            await _productOptionRepository.CreateManyAsync(validOptions);
 
             return validOptions;
         }
@@ -84,7 +84,7 @@ namespace Product.API.Services
                 return;
             }
 
-            await _productOptionrepository.DeleteManyAsync(optionIds);
+            await _productOptionRepository.DeleteManyAsync(optionIds);
         }
     }
 }
