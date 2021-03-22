@@ -3,8 +3,9 @@
 ### Product.API is a .Net Core Web API application that allows to create as well as update/delete simple products with their options.
 
 ##### *Prerequisites*
-[x] Visual Studio 2019 + .Netcore 3.1
-[x] Nuget packages: Dapper
+- [x] Visual Studio 2019 + .Netcore 3.1
+- [x] CsvHelper Nuget package
+- [x] Nlog.Web.AspNetCore Nuget package
 
 ##### *Assumptions*
 1. The application tries to merge product catalogs from 2 different sources (in this case source is a company) only.
