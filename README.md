@@ -4,8 +4,7 @@
 
 ##### *Prerequisites*
 - [x] Visual Studio 2019 + .Netcore 3.1
-- [x] CsvHelper Nuget package
-- [x] Nlog.Web.AspNetCore Nuget package
+- [x] Nuget packages: Dapper, Microsoft.Data.Sqlite, Newtonsoft.Json, NLog.Web.AspNetCore, Swashbuckle.AspNetCore, Moq, NUnit
 
 ##### *Assumptions*
 1. The application tries to merge product catalogs from 2 different sources (in this case source is a company) only.
