@@ -1,6 +1,6 @@
 # Product.API
 ---
-### Product.API is a .Net Core Web API application that allows to create as well as update/delete simple products with their options.
+### Product.API is a .Net Core Web API application that allows to create as well as get/update/delete simple products with their options.
 
 ##### *Prerequisites*
 - [x] Visual Studio 2019 + .Netcore 3.1
