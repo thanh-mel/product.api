@@ -32,5 +32,9 @@
 - Applied *Repository pattern* for CRUD operations for any object types.
 - Applied *optimistic locking mechanism* by using *ETag* and *If-Match* in request and response headers to prevent the LOST UPDATE issue. I chose this approach because it is lightweight, less resource intensive & easy to implement over the use of database locking mechanism. Reference: https://docs.microsoft.com/en-us/powerapps/developer/data-platform/webapi/perform-conditional-operations-using-web-api. To be honest I haven't looked deeper and measured the *optimistic locking* at database level so I maybe wrong with my statement above, so let me know ;).
 
+*Questions & Answers*
+- Q: So how do I do an update to an existing product then?
+- A: First, grab the hashed string from the response header named *ETag* when you get the product details by hitting this endpoint *GET /api/Product/v1/products/{productId}*. Second, pass the hashed string into the request header named *If-Match* when you update the product by hitting this endpoint *PUT /api/Product/v1/products*. The underlying logic will tell you whether your update request is accepted if there is no changes or rejected if there are changes since you have called the *GET /api/Product/v1/products/{productId}* endpoint. In this case you need to repeat the first step and second step in order to update the product successfully.
+
 
 **Happy coding**
