@@ -10,7 +10,7 @@
 1. There is no authentication/authorization for create, update and delete products/product options actions. However when deploying to production this must be implemented along with SSL to protect our data.
 2. Database connection string, secrets, tokens etc should be stored in more secure places such as AWS Secret Manager or Parameters Store etc instead in appsettings.json file. That way our credentials won't expose to public via checkins.  
 3. Data will be persisted into local database file called *products.db* under *App_Data* folder. In production, it should be replaced by a more powerful RDBMS instance.
-4. Logging is just simply writing info to console. For production it should be writing to other sources such as Sumo Logic for better insights.
+4. Logging is just simply writing info to console. For production it should be writing to other sources such as Sumo Logic for better monitoring insights.
 
 ##### *Entry point*
 `Program.cs`
