@@ -21,5 +21,13 @@
 3. Choose an API for example GET /api/Product/v1/products, hit the Try it out button then hit the Execute button then check the result from the underneath pane. 
 ```
 
-*Notes*
-- In some cases csv files maybe big that could make the application not responsive, therefore when reading large csv data the application uses async await mechanism to load data as stream. Tested with more than 3+ million records in a catalog csv file and CPU usage was just around 50%.
+*Project description & requirements*
+- Provide endpoints for basic *CRUD* operations for products and their options.
+- Persist products and options into local database.
+- Prevent LOST UPDATE issue when there are multiple API requests trying to update the same product.
+- Unit tests to make sure business logic implementations are as expected.
+
+*Design Patterns & Implementations*
+- Applied *Abstract Factory pattern* to create database connection for the application therefore any service that relies on this for example the IRepository does not need to know how the database connection is constructed.
+- Applied *Repository pattern* for CRUD operations.
+- Applied *optimistic locking mechanism* by using *ETag* and *If-Match* in request and response headers to prevent the LOST UPDATE issue. I chose this approach because it is lightweight, less resource intensive & easy to implement over the use of database locking mechanism. See this: https://docs.microsoft.com/en-us/powerapps/developer/data-platform/webapi/perform-conditional-operations-using-web-api.
