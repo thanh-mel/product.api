@@ -11,13 +11,13 @@
 2. Database connection string, secrets, tokens etc should be stored in more secure places such as AWS Secret Manager or Parameters Store etc instead in appsettings.json file. That way our credentials won't expose to public via checkins.  
 
 ##### *Entry point*
-`CatalogMergeHostedService.cs`
+`Program.cs`
 
 **How to run the app**
 ```
-1. Double click on the solution file CodeChallenge.sln, this should bring up Visual Studio 2019
-2. Hit F5 to run
-3. Check result in /Data/Output folder
+1. Double click on the solution file Product.API.sln, this should bring up Visual Studio 2019
+2. Hit F5 to run, this should bring up the browser with this url loaded https://localhost:5001/swagger/index.html. This is the Swagger API interface that helps us execute REST API calls easily with less effort.
+3. Choose an API for example GET /api/Product/v1/products, hit the Try it out button then hit the Execute button then check the result from the underneath pane. 
 ```
 
 *Notes*
