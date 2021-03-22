@@ -7,7 +7,7 @@
 - [x] Nuget packages: Dapper, Microsoft.Data.Sqlite, Newtonsoft.Json, NLog.Web.AspNetCore, Swashbuckle.AspNetCore, Moq, NUnit
 
 ##### *Assumptions*
-1. The application tries to merge product catalogs from 2 different sources (in this case source is a company) only.
+1. There is no authentication/authorization for create, update and delete products/product options actions. However when deploying to production this must be implemented to protect our data.
 2. CSV file naming convention:
     - catalog<company-name>.csv: products for the company
     - suppliers<company-name>.csv: list of suppliers for the company
