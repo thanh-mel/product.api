@@ -26,6 +26,7 @@
 - Persist products and options into local database.
 - Prevent LOST UPDATE issue when there are multiple API requests trying to update the same product.
 - Unit tests to make sure business logic implementations are as expected.
+- Web API documentation - as this project is pretty simple therefore the Swagger API tool should do the job. Most of APIs are self explanatory with different HTTP verbs and RESTful urls otherwise please check the comments in the codebase.
 
 *Design Patterns & Implementations*
 - Applied *Abstract Factory pattern* to create database connection for the application therefore any service that relies on this for example the IRepository does not need to know how the database connection is constructed.
