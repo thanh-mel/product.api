@@ -31,3 +31,6 @@
 - Applied *Abstract Factory pattern* to create database connection for the application therefore any service that relies on this for example the IRepository does not need to know how the database connection is constructed.
 - Applied *Repository pattern* for CRUD operations.
 - Applied *optimistic locking mechanism* by using *ETag* and *If-Match* in request and response headers to prevent the LOST UPDATE issue. I chose this approach because it is lightweight, less resource intensive & easy to implement over the use of database locking mechanism. Reference: https://docs.microsoft.com/en-us/powerapps/developer/data-platform/webapi/perform-conditional-operations-using-web-api. To be honest I haven't tried the *optimistic locking* at database level so I maybe wrong with my statement above.
+
+
+**Happy coding**
