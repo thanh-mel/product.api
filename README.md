@@ -8,10 +8,7 @@
 
 ##### *Assumptions*
 1. There is no authentication/authorization for create, update and delete products/product options actions. However when deploying to production this must be implemented to protect our data.
-2. CSV file naming convention:
-    - catalog<company-name>.csv: products for the company
-    - suppliers<company-name>.csv: list of suppliers for the company
-    - barcodes<company-name>.csv: Product barcodes provided by supplier for the company
+2. Database connection string, secrets, tokens etc should be stored in more secure places such as AWS Secret Manager or Parameters Store etc instead in appsettings.json file. That way our credentials won't expose to public via checkins.  
 
 ##### *Entry point*
 `CatalogMergeHostedService.cs`
